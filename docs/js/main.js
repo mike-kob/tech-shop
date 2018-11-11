@@ -33,5 +33,5 @@
         return Object.prototype.hasOwnProperty.call(e, t)
     }, n.p = "", n(n.s = 0)
 }([function (e, t) {
-    console.log("Lolololol")
+    console.log("The time is ".concat(new Date))
 }]);
