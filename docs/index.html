@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shop</title>
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
+</head>
+<body>
+    <header class="header">
+        <img src="logo.png" class="logo">
+    </header>
+    <nav class="nav navigation">
+
+    </nav>
+<div class="product-grid">
+
+</div>
+
+<!-- scripts -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="../docs/js/main.js"></script>
+<!--<script>
+    jQuery.ajax({
+        url: 'http://nit.tron.net.ua/api/product/list/category/2',
+        method: 'get',
+        dataType: 'json',
+        success: function(json){
+            console.log('after success');
+            console.log(json);
+            json.forEach(function(product){
+                var $product = $('<div class="product">');
+                $product.append($('<h4 class="product-title">').text(product.name));
+                $product.append($('<span class="product-price">').text(product.price));
+                $product.appendTo('.product-grid');
+            });
+        },
+    });
+    console.log('after ajax');
+</script>-->
+</body>
+</html>
