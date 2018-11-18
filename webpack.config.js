@@ -35,4 +35,7 @@ module.exports = {
             filename: "../docs/css/[name].css",
         }),
     ],
+    externals: {
+    jquery: 'jQuery'
+  }
 };
