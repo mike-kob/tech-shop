@@ -175,7 +175,7 @@ function addToCart(product_id, quantity) {
 function showCart() {
     $('.cart-list').empty();
     var $list = sessionStorage.getItem('cart');
-    if ($list === ''){
+    if ($list === '' || $list === undefined){
         ($('<span class="cart-empty">').text('The cart is empty')).appendTo('.cart-list');
         return;
     }
