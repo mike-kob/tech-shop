@@ -8,7 +8,7 @@ function showCategory(category_id) {
     $('.aside').empty();
 
     jQuery.ajax({
-        url: 'http://nit.tron.net.ua/api/product/list/category/' + category_id,
+        url: 'https://nit.tron.net.ua/api/product/list/category/' + category_id,
         method: 'get',
         dataType: 'json',
         success: function (json) {
@@ -43,7 +43,7 @@ function showProduct(product_id) {
     $last = $last + 'prod-' + product_id + '|';
     sessionStorage.setItem('cat_history', $last);
     jQuery.ajax({
-        url: 'http://nit.tron.net.ua/api/product/' + product_id,
+        url: 'https://nit.tron.net.ua/api/product/' + product_id,
         method: 'get',
         dataType: 'json',
         success: function (json) {
@@ -72,7 +72,7 @@ function showAll() {
     $('.aside').empty();
 
     jQuery.ajax({
-        url: 'http://nit.tron.net.ua/api/product/list/',
+        url: 'https://nit.tron.net.ua/api/product/list/',
         method: 'get',
         dataType: 'json',
         success: function (json) {
@@ -115,7 +115,7 @@ function loadCategories() {
         backFunction();
     });
     jQuery.ajax({
-        url: 'http://nit.tron.net.ua/api/category/list',
+        url: 'https://nit.tron.net.ua/api/category/list',
         method: 'get',
         dataType: 'json',
         success: function (json) {
@@ -183,7 +183,7 @@ function showCart() {
     $list.split(';').forEach(function (product_id) {
         if (product_id === '') return;
         jQuery.ajax({
-            url: 'http://nit.tron.net.ua/api/product/' + product_id.trim(),
+            url: 'https://nit.tron.net.ua/api/product/' + product_id.trim(),
             method: 'get',
             dataType: 'json',
             success: function (json) {
@@ -255,7 +255,7 @@ $(document).on('submit', '#buy-form', function (event) {
         $params['products[' + product_id + ']'] = sessionStorage.getItem('cart-prod-' + product_id);
     });
     jQuery.ajax({
-        url: 'http://nit.tron.net.ua/api/order/add',
+        url: 'https://nit.tron.net.ua/api/order/add',
         method: 'post',
         dataType: 'json',
         data: $params,
