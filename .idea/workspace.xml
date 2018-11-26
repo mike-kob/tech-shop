@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="367e9b43-87dc-4550-9603-ea34efb3e9c5" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -32,10 +32,11 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="css" value="7" />
-          <entry key="gitignore" value="1" />
+          <entry key="gitignore" value="2" />
           <entry key="html" value="3" />
           <entry key="js" value="8" />
           <entry key="json" value="7" />
+          <entry key="png" value="1" />
           <entry key="scss" value="2" />
         </counts>
       </usages-collector>
@@ -43,20 +44,22 @@
         <counts>
           <entry key="CSS" value="7" />
           <entry key="HTML" value="3" />
+          <entry key="Image" value="1" />
           <entry key="JSON" value="7" />
           <entry key="JavaScript" value="8" />
-          <entry key="PLAIN_TEXT" value="1" />
+          <entry key="PLAIN_TEXT" value="2" />
           <entry key="SCSS" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="css" value="942" />
+          <entry key="gitignore" value="10" />
           <entry key="html" value="2322" />
           <entry key="js" value="6458" />
           <entry key="json" value="20" />
           <entry key="scss" value="991" />
-          <entry key="txt" value="117" />
+          <entry key="txt" value="122" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -65,7 +68,7 @@
           <entry key="HTML" value="2322" />
           <entry key="JSON" value="20" />
           <entry key="JavaScript" value="6458" />
-          <entry key="PLAIN_TEXT" value="117" />
+          <entry key="PLAIN_TEXT" value="132" />
           <entry key="SCSS" value="991" />
         </counts>
       </usages-collector>
@@ -103,7 +106,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/docs/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="515">
+            <state relative-caret-position="940">
               <caret line="67" column="42" lean-forward="true" selection-start-line="67" selection-start-column="42" selection-end-line="67" selection-end-column="42" />
               <folding>
                 <element signature="n#nav#0;n#body#0;n#html#0;n#!!top" />
@@ -113,10 +116,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="20">
+              <caret line="1" column="8" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="260" column="22" lean-forward="true" selection-start-line="260" selection-start-column="22" selection-end-line="260" selection-end-column="22" />
+            <state relative-caret-position="1860">
+              <caret line="260" column="15" lean-forward="true" selection-start-line="260" selection-start-column="15" selection-end-line="260" selection-end-column="15" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
                 <element signature="n#!!block;n#showCategory#0" />
@@ -179,7 +191,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/docs/js/main.js" />
         <option value="$PROJECT_DIR$/dist/index.html" />
         <option value="$PROJECT_DIR$/docs/css/bootstrap.min.css" />
@@ -189,6 +200,7 @@
         <option value="$PROJECT_DIR$/src/scss/main.scss" />
         <option value="$PROJECT_DIR$/docs/index.html" />
         <option value="$PROJECT_DIR$/src/index.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -302,7 +314,7 @@
       <workItem from="1542708445834" duration="6751000" />
       <workItem from="1542893690267" duration="5041000" />
       <workItem from="1542972362809" duration="19777000" />
-      <workItem from="1543224755129" duration="1720000" />
+      <workItem from="1543224755129" duration="2128000" />
     </task>
     <task id="LOCAL-00001" summary="Init commit">
       <created>1541953328308</created>
@@ -360,31 +372,38 @@
       <option name="project" value="LOCAL" />
       <updated>1543225643946</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Https">
+      <created>1543237918413</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1543237918413</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="79556000" />
+    <option name="totallyTimeSpent" value="79964000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10310641" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16523464" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49966952" visible="true" weight="0.32907802" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49636483" visible="true" weight="0.11631206" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49636483" weight="0.25815603" />
       <window_info anchor="bottom" id="Messages" order="9" weight="0.32907802" />
-      <window_info active="true" anchor="bottom" id="Event Log" order="10" sideWeight="0.50363517" side_tool="true" visible="true" weight="0.11631206" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50033045" side_tool="true" visible="true" weight="0.32907802" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.32907802" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -415,16 +434,10 @@
     <MESSAGE value="Installed Sass loader" />
     <MESSAGE value="Features added" />
     <MESSAGE value="Bugs with github" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bugs with github" />
+    <MESSAGE value="Https" />
+    <option name="LAST_COMMIT_MESSAGE" value="Https" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="13" selection-start-column="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dist/css/main.css" />
     <entry file="file://$PROJECT_DIR$/dist/index.html" />
     <entry file="file://$PROJECT_DIR$/node_modules/bootstrap/dist/css/bootstrap.css" />
@@ -475,20 +488,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="515">
-          <caret line="67" column="42" lean-forward="true" selection-start-line="67" selection-start-column="42" selection-end-line="67" selection-end-column="42" />
-          <folding>
-            <element signature="n#nav#0;n#body#0;n#html#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/docs/Add-To-Cart-128.png">
+      <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="260" column="22" lean-forward="true" selection-start-line="260" selection-start-column="22" selection-end-line="260" selection-end-column="22" />
+        <state relative-caret-position="1860">
+          <caret line="260" column="15" lean-forward="true" selection-start-line="260" selection-start-column="15" selection-end-line="260" selection-end-column="15" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
             <element signature="n#!!block;n#showCategory#0" />
@@ -498,6 +504,23 @@
             <element signature="n#!!block;n#addToCart#0" />
             <element signature="n#!!block;n#showCart#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="940">
+          <caret line="67" column="42" lean-forward="true" selection-start-line="67" selection-start-column="42" selection-end-line="67" selection-end-column="42" />
+          <folding>
+            <element signature="n#nav#0;n#body#0;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="1" column="8" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="8" />
         </state>
       </provider>
     </entry>
