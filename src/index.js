@@ -40,9 +40,6 @@ function showCategory(category_id) {
 
 function showProduct(product_id) {
     $('.aside').empty();
-    var $last = sessionStorage.getItem('cat_history');
-    $last = $last + 'prod-' + product_id + '|';
-    sessionStorage.setItem('cat_history', $last);
     jQuery.ajax({
         url: 'https://nit.tron.net.ua/api/product/' + product_id,
         method: 'get',
@@ -106,12 +103,6 @@ function showAll() {
 
 function loadCategories() {
     sessionStorage.setItem('cat_history', '0|');
-
-    $(document).on('click', '.all_products', function () {
-        showAll();
-        var $prev = sessionStorage.getItem('cat_history').concat('0|');
-        sessionStorage.setItem('cat_history', $prev);
-    });
     $(document).on('click', '.go-return', function () {
         var $prev = sessionStorage.getItem('prev-category');
         if($prev == undefined){
@@ -132,8 +123,6 @@ function loadCategories() {
                 var $category = $('<li class="btn btn-default btn-block category">');
                 $category.text(category.name);
                 $category.click(function () {
-                    var $prev = sessionStorage.getItem('cat_history').concat(category.id).concat('|');
-                    sessionStorage.setItem('cat_history', $prev);
                     showCategory(category.id);
                 });
                 $category.appendTo('.categories');
@@ -141,7 +130,6 @@ function loadCategories() {
         },
     });
 }
-
 
 function addToCart(product_id, quantity) {
     var $cart = sessionStorage.getItem('cart');
@@ -184,6 +172,7 @@ function showCart() {
                 $product_list.attr('data-product-id', product_id);
                 $product_list.attr('data-product-quantity', $quantity);
 
+                $product_list.append($('<span class="glyphicon glyphicon-remove remove-product">'));
                 $product_list.append($('<a class="cart-item-title btn btn-link">').text(json.name));
                 $product_list.append($('<button class="quantity-button-minus">').text('-'));
                 $product_list.append($('<span class="cart-item-quantity">').text($quantity));
@@ -212,6 +201,7 @@ $(document).on('click', '.button-add-cart', function () {
     var $product_id = $(this.parentNode).data('product-id');
     addToCart($product_id, 1);
 });
+
 $(document).on('click', '.image', function () {
     var $product_id = $(this.parentNode).data('product-id');
     showProduct($product_id);
@@ -228,7 +218,6 @@ $(document).on('click', '.close-cart', function () {
     var $cart_view = $('.cart-view');
     $cart_view.removeClass('active-cart').addClass('hidden-cart');
 });
-
 
 $(document).on('submit', '#buy-form', function (event) {
     event.preventDefault();
@@ -283,7 +272,6 @@ $(document).on('submit', '#buy-form', function (event) {
     });
 });
 
-
 $(document).on('click', '.quantity-button-minus', function () {
     var $product_id = $(this.parentNode).data('product-id');
     var $product_price = parseFloat($(this.parentNode).data('product-price'));
@@ -315,6 +303,15 @@ $(document).on('click', '.quantity-button-plus', function () {
 
 $(document).on('click', '.page-button', function () {
     addToCart($(this).data('product-id'), 1);
+});
+
+$(document).on('click', '.remove-product', function () {
+    var $product_id = $(this.parentNode).data('product-id');
+    sessionStorage.removeItem('cart-prod-' + $product_id);
+    var $list = sessionStorage.cart;
+    $list = $list.replace($product_id + ';', '');
+    sessionStorage.setItem('cart', $list);
+    showCart();
 });
 
 loadCategories();
