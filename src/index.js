@@ -27,7 +27,7 @@ function showCategory(category_id) {
                 }
                 $product.append($('<br>'));
                 $product.append($('<button class="btn-success btn button-add-cart">').text('Add to card'));
-                var $grid_cell = $('<div class="card col-lg-3 col-md-4 col-sm-6 col-xs-12">');
+                var $grid_cell = $('<div class="card col-lg-3 col-md-12 col-sm-12 col-xs-12">');
 
                 $grid_cell.append($product);
                 $product_grid.append($grid_cell);
@@ -89,7 +89,7 @@ function showAll() {
                 }
                 $product.append($('<br>'));
                 $product.append($('<button class="btn-success btn button-add-cart">').text('Add to card'));
-                var $grid_cell = $('<div class="card col-lg-3 col-md-4 col-sm-6 col-xs-12">');
+                var $grid_cell = $('<div class="card col-lg-3 col-md-12 col-sm-12 col-xs-12">');
 
                 $grid_cell.append($product);
                 $product_grid.append($grid_cell);
@@ -155,9 +155,13 @@ function showCart() {
     if ($list === '' || $list == undefined) {
         ($('<p class="cart-empty">').text('The cart is empty')).appendTo('.cart-list');
         $('#buy-form').removeClass('active-cart').addClass('hidden-cart');
+        $('.operation_ok').removeClass('active-cart').addClass('hidden-cart');
+        $('.errors').removeClass('active-cart').addClass('hidden-cart');
         return;
     } else {
         $('#buy-form').removeClass('hidden-cart').addClass('active-cart');
+        $('.operation_ok').removeClass('hidden-cart').addClass('active-cart');
+        $('.errors').removeClass('hidden-cart').addClass('active-cart');
     }
     var $total = 0;
     $list.split(';').forEach(function (product_id) {
