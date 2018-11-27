@@ -1,3 +1,8 @@
+$head_height: 14vh;
+$page_img_height: 400px;
+$nav_width: 15%;
+$img_max_height: 260px;
+
 .bl {
   background-color: red;
   width: 50px;
@@ -6,8 +11,6 @@
   margin: 10px;
 }
 
-$head_height: 14vh;
-
 .header {
   font-size: 25px;
 }
@@ -15,8 +18,6 @@ $head_height: 14vh;
 a.logo {
   color: lightcyan !important;
 }
-
-$nav_width: 15%;
 
 .navigation {
   position: fixed !important;
@@ -40,8 +41,6 @@ $card_height: 440px;
   padding-bottom: 30px;
   filter: drop-shadow(0 0 7px rgba(0, 0, 0, 0.2));
 }
-
-$img_max_height: 280px;
 
 .image {
   max-height: $img_max_height;
@@ -106,6 +105,7 @@ $img_max_height: 280px;
 }
 
 .page-image {
+  max-height: $page_img_height;
 }
 
 .page-price-discount {
@@ -220,9 +220,10 @@ li.category {
   display: block;
 }
 
-.cart-empty{
+.cart-empty {
   font-size: 50px;
   color: darkblue;
+  text-align: center;
 }
 
 .cart-item-price {
@@ -245,4 +246,37 @@ li.category {
 
 .operation_ok {
   color: green;
+}
+
+.input-cart {
+  width: 70%;
+  border-radius: 7px;
+  margin: 10px;
+}
+
+input.subm {
+  display: block;
+  margin: auto;
+}
+
+button.page-button {
+  margin: 10px auto;
+  display: block;
+}
+
+.total{
+  color: red;
+}
+
+@media (max-width: 850px) {
+  a.cart-item-title {
+    display: block;
+  }
+
+  .quantity-button-minus{
+    margin: 5px;
+  }
+  .quantity-button-plus{
+    margin: 5px;
+  }
 }

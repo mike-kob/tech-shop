@@ -30,7 +30,7 @@ div.aside {
   filter: drop-shadow(0 0 7px rgba(0, 0, 0, 0.2)); }
 
 .image {
-  max-height: 280px;
+  max-height: 260px;
   width: 100%;
   object-fit: contain; }
 
@@ -79,6 +79,9 @@ div.aside {
 
 .product-page {
   text-align: center; }
+
+.page-image {
+  max-height: 400px; }
 
 .page-price-discount {
   color: darkred;
@@ -176,7 +179,8 @@ li.category {
 
 .cart-empty {
   font-size: 50px;
-  color: darkblue; }
+  color: darkblue;
+  text-align: center; }
 
 .cart-item-price {
   font-size: 25px;
@@ -195,4 +199,28 @@ li.category {
 
 .operation_ok {
   color: green; }
+
+.input-cart {
+  width: 70%;
+  border-radius: 7px;
+  margin: 10px; }
+
+input.subm {
+  display: block;
+  margin: auto; }
+
+button.page-button {
+  margin: 10px auto;
+  display: block; }
+
+.total {
+  color: red; }
+
+@media (max-width: 850px) {
+  a.cart-item-title {
+    display: block; }
+  .quantity-button-minus {
+    margin: 5px; }
+  .quantity-button-plus {
+    margin: 5px; } }
 

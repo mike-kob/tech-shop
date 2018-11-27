@@ -6,7 +6,7 @@ window.$ = $;
 
 function showCategory(category_id) {
     $('.aside').empty();
-
+    sessionStorage.setItem('prev-category', category_id);
     jQuery.ajax({
         url: 'https://nit.tron.net.ua/api/product/list/category/' + category_id,
         method: 'get',
@@ -16,6 +16,7 @@ function showCategory(category_id) {
             json.forEach(function (product) {
                 var $product = $('<div class="product">');
                 $product.append($('<h5 class="product-title">').text(product.name));
+                $product.attr('data-product-id', product.id);
                 $product.append($('<img src="'.concat(product.image_url).concat('" class="image">')));
                 if (product.special_price == null) {
                     $product.append($('<span class="price">').text(product.price));
@@ -25,7 +26,7 @@ function showCategory(category_id) {
 
                 }
                 $product.append($('<br>'));
-                $product.append($('<button class="btn-success btn">').text('Add to card'));
+                $product.append($('<button class="btn-success btn button-add-cart">').text('Add to card'));
                 var $grid_cell = $('<div class="card col-lg-3 col-md-4 col-sm-6 col-xs-12">');
 
                 $grid_cell.append($product);
@@ -49,8 +50,8 @@ function showProduct(product_id) {
         success: function (json) {
             var $product_page = $('<div class="product-page">');
 
-            $product_page.append();
             $product_page.append($('<h5 class="page-title">').text(json.name));
+            $product_page.append($('<button class="page-button btn btn-primary">').attr('data-product-id', product_id).text('Add to cart'));
             $product_page.append($('<img src="'.concat(json.image_url).concat('" class="page-image">')));
             $product_page.append($('<br>'));
             if (json.special_price == null) {
@@ -70,6 +71,7 @@ function showProduct(product_id) {
 
 function showAll() {
     $('.aside').empty();
+    sessionStorage.setItem('prev-category', 'all-products');
 
     jQuery.ajax({
         url: 'https://nit.tron.net.ua/api/product/list/',
@@ -90,7 +92,6 @@ function showAll() {
                 }
                 $product.append($('<br>'));
                 $product.append($('<button class="btn-success btn button-add-cart">').text('Add to card'));
-                //$product.append($('<p class="description">').text(product.description));
                 var $grid_cell = $('<div class="card col-lg-3 col-md-4 col-sm-6 col-xs-12">');
 
                 $grid_cell.append($product);
@@ -112,7 +113,15 @@ function loadCategories() {
         sessionStorage.setItem('cat_history', $prev);
     });
     $(document).on('click', '.go-return', function () {
-        backFunction();
+        var $prev = sessionStorage.getItem('prev-category');
+        if($prev == undefined){
+            return;
+        }
+        if($prev==='all-products'){
+            showAll()
+        } else {
+            showCategory($prev);
+        }
     });
     jQuery.ajax({
         url: 'https://nit.tron.net.ua/api/category/list',
@@ -133,26 +142,6 @@ function loadCategories() {
     });
 }
 
-function backFunction() {
-    var $hist = sessionStorage.getItem('cat_history');
-    if ($hist !== '0|') {
-        var $list = $hist.split('|');
-        var $last = $list[$list.length - 2];
-        if ($last === '0') {
-
-            showAll();
-        } else if ($last.includes('prod-')) {
-            console.log('log');
-            showProduct($last.replace('prod-', ''));
-        } else if ($last === 'cart') {
-
-        } else {
-            showCategory($last);
-        }
-        sessionStorage.setItem('cat_history', $hist.substr(0, $hist.length - $last.length - 1));
-
-    }
-}
 
 function addToCart(product_id, quantity) {
     var $cart = sessionStorage.getItem('cart');
@@ -175,11 +164,14 @@ function addToCart(product_id, quantity) {
 function showCart() {
     $('.cart-list').empty();
     var $list = sessionStorage.getItem('cart');
-    if ($list === '' || $list === undefined){
-        ($('<span class="cart-empty">').text('The cart is empty')).appendTo('.cart-list');
+    if ($list === '' || $list == undefined) {
+        ($('<p class="cart-empty">').text('The cart is empty')).appendTo('.cart-list');
+        $('#buy-form').removeClass('active-cart').addClass('hidden-cart');
         return;
+    } else {
+        $('#buy-form').removeClass('hidden-cart').addClass('active-cart');
     }
-
+    var $total = 0;
     $list.split(';').forEach(function (product_id) {
         if (product_id === '') return;
         jQuery.ajax({
@@ -197,15 +189,18 @@ function showCart() {
                 $product_list.append($('<span class="cart-item-quantity">').text($quantity));
                 $product_list.append($('<button class="quantity-button-plus">').text('+'));
                 if (json.special_price != null) {
+                    $total += parseFloat(json.special_price) * $quantity;
                     $product_list.append($('<span class="cart-item-price">').text(parseFloat(json.special_price) * $quantity));
                     $product_list.attr('data-product-price', json.special_price);
                 } else {
+                    $total += parseFloat(json.price) * $quantity;
                     $product_list.append($('<span class="cart-item-price">').text(parseFloat(json.price) * $quantity));
                     $product_list.attr('data-product-price', json.price);
                 }
 
 
                 $product_list.appendTo('.cart-list');
+
             },
         });
 
@@ -220,10 +215,6 @@ $(document).on('click', '.button-add-cart', function () {
 $(document).on('click', '.image', function () {
     var $product_id = $(this.parentNode).data('product-id');
     showProduct($product_id);
-});
-
-$(document).on('click', '.cart-view', function () {
-    backFunction();
 });
 
 $(document).on('click', '.button-shopping-card', function () {
@@ -267,7 +258,7 @@ $(document).on('submit', '#buy-form', function (event) {
             console.log(json);
             if (json.status === 'error') {
                 if (json.errors.products !== undefined) {
-                        $para.append($('<li>').text('You must select some products first.'));
+                    $para.append($('<li>').text('You must select some products first.'));
                 }
                 if (json.errors.name !== undefined) {
                     json.errors.name.forEach(function (error) {
@@ -322,6 +313,9 @@ $(document).on('click', '.quantity-button-plus', function () {
     $list_item.find('.cart-item-price').text($quantity * $product_price);
 });
 
+$(document).on('click', '.page-button', function () {
+    addToCart($(this).data('product-id'), 1);
+});
 
 loadCategories();
-//showAll();
+showAll();
