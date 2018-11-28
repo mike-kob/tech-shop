@@ -3,14 +3,6 @@ $page_img_height: 400px;
 $nav_width: 15%;
 $img_max_height: 260px;
 
-.bl {
-  background-color: red;
-  width: 50px;
-  height: 50px;
-  padding: 10px;
-  margin: 10px;
-}
-
 .header {
   font-size: 25px;
 }
@@ -19,16 +11,12 @@ a.logo {
   color: lightcyan !important;
 }
 
-.navigation {
-  position: fixed !important;
-  width: $nav_width;
-  height: (100vh - $head_height);
-}
 
 div.aside {
   float: none;
   margin: auto;
 }
+
 
 $card_height: 440px;
 .card {
@@ -133,29 +121,6 @@ li.category {
   cursor: pointer;
   display: block;
   background-color: darkgrey;
-}
-
-.add-cart {
-  float: left;
-  margin-top: -15px;
-  margin-left: 15px;
-  position: relative;
-  top: 7px;
-  right: 7px;
-  opacity: 0;
-  background-color: red;
-  border-radius: 50%;
-  max-width: 45px;
-}
-
-.product:hover .add-cart {
-
-  opacity: 1;
-  transition: all 0.5s ease;
-}
-
-.add-cart:hover {
-  background-color: darkred;
 }
 
 .cart-view {

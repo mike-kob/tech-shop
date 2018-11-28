@@ -1,20 +1,8 @@
-.bl {
-  background-color: red;
-  width: 50px;
-  height: 50px;
-  padding: 10px;
-  margin: 10px; }
-
 .header {
   font-size: 25px; }
 
 a.logo {
   color: lightcyan !important; }
-
-.navigation {
-  position: fixed !important;
-  width: 15%;
-  height: 86vh; }
 
 div.aside {
   float: none;
@@ -106,25 +94,6 @@ li.category {
   display: block;
   background-color: darkgrey; }
 
-.add-cart {
-  float: left;
-  margin-top: -15px;
-  margin-left: 15px;
-  position: relative;
-  top: 7px;
-  right: 7px;
-  opacity: 0;
-  background-color: red;
-  border-radius: 50%;
-  max-width: 45px; }
-
-.product:hover .add-cart {
-  opacity: 1;
-  transition: all 0.5s ease; }
-
-.add-cart:hover {
-  background-color: darkred; }
-
 .cart-view {
   position: absolute;
   top: 0;
@@ -172,7 +141,7 @@ li.category {
   margin: 0 10px 0 0; }
 
 .hidden-cart {
-  display: none; }
+  display: none !important; }
 
 .active-cart {
   display: block; }
