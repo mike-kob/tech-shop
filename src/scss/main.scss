@@ -3,6 +3,11 @@ $page_img_height: 400px;
 $nav_width: 15%;
 $img_max_height: 260px;
 
+html,
+body {
+  height: 100%;
+}
+
 .header {
   font-size: 25px;
 }
@@ -243,11 +248,23 @@ button.page-button {
   float: right;
   color: white;
 }
-
-.footer{
-    height: 40px;
-    background: #2c2f33e0;
-    margin: 0;
+//
+//.footer{
+//    height: 40px;
+//    background: #2c2f33e0;
+//    margin: 0;
+//}
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.content {
+  flex: 1 0 auto;
+}
+.footer {
+  flex: 0 0 auto;
+  background: #2c2f33e0;
 }
 
 @media (max-width: 1000px) {

@@ -8,57 +8,62 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body>
-
-<!--taken from https://www.w3schools.com/bootstrap/bootstrap_navbar.asp-->
-<nav class="navbar navbar-inverse header">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand logo" href="#">TechShop</a>
-        </div>
-        <ul class="nav navbar-nav">
-            <li><a href="#"><span class="glyphicon glyphicon-arrow-left go-return"></span></a></li>
-            <li><a href="#" class="all_products">Всі товари</a></li>
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Категорії
-                    <span class="caret"></span></a>
-                <ul class="dropdown-menu categories">
+<div class="wrapper">
+    <div class="content">
+        <!--taken from https://www.w3schools.com/bootstrap/bootstrap_navbar.asp-->
+        <nav class="navbar navbar-inverse header">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand logo" href="#">TechShop</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li><a href="#"><span class="glyphicon glyphicon-arrow-left go-return"></span></a></li>
+                    <li><a href="#" class="all_products">Всі товари</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Категорії
+                            <span class="caret"></span></a>
+                        <ul class="dropdown-menu categories">
+                        </ul>
+                    </li>
                 </ul>
-            </li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-            <li><a href="#" class="button-shopping-card"><span class="glyphicon glyphicon-shopping-cart"></span>
-                Cart</a></li>
-        </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#" class="button-shopping-card"><span class="glyphicon glyphicon-shopping-cart"></span>
+                        Cart</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="aside col-xs-11 col-sm-11 col-md-11 col-lg-11">
+
+        </div>
+
+        <div class="cart-view hidden-cart">
+            <div class="shopping-cart-window">
+                <span class="cart-title">Your cart</span>
+
+                <span class="glyphicon glyphicon-minus close-cart"></span>
+                <ul class="cart-list">
+
+
+                </ul>
+                <!-- taken from https://www.w3schools.com/tags/tag_input.asp-->
+                <form id="buy-form" class="active-cart" autocomplete="on">
+                    Name:<input class="input-cart" type="text" name="flname"><br>
+                    E-mail: <input class="input-cart" type="email" name="email" autocomplete="off"><br>
+                    Phone: <input class="input-cart" type="tel" name="phone">
+                    <input type="submit" class="btn btn-primary subm">
+                </form>
+                <ul class="errors active-cart"></ul>
+                <p class="operation_ok active-cart"></p>
+            </div>
+        </div>
     </div>
-</nav>
-
-<div class="aside col-xs-11 col-sm-11 col-md-11 col-lg-11">
-
-</div>
-
-<div class="cart-view hidden-cart">
-    <div class="shopping-cart-window">
-        <span class="cart-title">Your cart</span>
-
-        <span class="glyphicon glyphicon-minus close-cart"></span>
-        <ul class="cart-list">
-
-
-        </ul>
-        <!-- taken from https://www.w3schools.com/tags/tag_input.asp-->
-        <form id="buy-form" class="active-cart" autocomplete="on">
-            Name:<input class="input-cart" type="text" name="flname"><br>
-            E-mail: <input class="input-cart" type="email" name="email" autocomplete="off"><br>
-            Phone: <input class="input-cart" type="tel" name="phone">
-            <input type="submit" class="btn btn-primary subm">
-        </form>
-        <ul class="errors active-cart"></ul>
-        <p class="operation_ok active-cart"></p>
+    <div class="footer">
+        <footer>
+            <p class="footer-name">Michael Kobelev</p>
+        </footer>
     </div>
 </div>
-<footer class="footer">
-    <p class="footer-name">Michael Kobelev</p>
-</footer>
 <script src="./js/main.js"></script>
 <script>console.log("lol");</script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
