@@ -190,6 +190,15 @@ button.page-button {
   margin: 5px 0 5px 5px;
   float: left; }
 
+.footer-name {
+  float: right;
+  color: white; }
+
+.footer {
+  height: 40px;
+  background: #2c2f33e0;
+  margin: 0; }
+
 @media (max-width: 1000px) {
   a.cart-item-title {
     display: block; }
