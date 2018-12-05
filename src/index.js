@@ -8,7 +8,7 @@ function showCategory(category_id) {
     $('.aside').empty();
     sessionStorage.setItem('prev-category', category_id);
     jQuery.ajax({
-        url: 'https://nit.tron.net.ua/api/product/list/category/' + category_id,
+        url: 'http://tranquil-bayou-20279.herokuapp.com/api/product/category/' + category_id,
         method: 'get',
         dataType: 'json',
         success: function (json) {
@@ -41,7 +41,7 @@ function showCategory(category_id) {
 function showProduct(product_id) {
     $('.aside').empty();
     jQuery.ajax({
-        url: 'https://nit.tron.net.ua/api/product/' + product_id,
+        url: 'http://tranquil-bayou-20279.herokuapp.com/api/product/' + product_id,
         method: 'get',
         dataType: 'json',
         success: function (json) {
@@ -71,10 +71,12 @@ function showAll() {
     sessionStorage.setItem('prev-category', 'all-products');
 
     jQuery.ajax({
-        url: 'https://nit.tron.net.ua/api/product/list/',
+        url: 'http://tranquil-bayou-20279.herokuapp.com/api/product/',
         method: 'get',
         dataType: 'json',
+
         success: function (json) {
+            console.log("json");
             var $product_grid = $('<div class="product-grid row clearfix">');
             json.forEach(function (product) {
                 var $product = $('<div class="product">');
@@ -114,7 +116,7 @@ function loadCategories() {
         }
     });
     jQuery.ajax({
-        url: 'https://nit.tron.net.ua/api/category/list',
+        url: 'http://tranquil-bayou-20279.herokuapp.com/api/category/',
         method: 'get',
         dataType: 'json',
         success: function (json) {
@@ -166,7 +168,7 @@ function showCart() {
     $list.split(';').forEach(function (product_id) {
         if (product_id === '') return;
         jQuery.ajax({
-            url: 'https://nit.tron.net.ua/api/product/' + product_id.trim(),
+            url: 'http://tranquil-bayou-20279.herokuapp.com/api/product/' + product_id.trim(),
             method: 'get',
             dataType: 'json',
             success: function (json) {
@@ -227,59 +229,75 @@ $(document).on('submit', '#buy-form', function (event) {
     var $flname = $(this).find('input[name="flname"]').val();
     var $email = $(this).find('input[name="email"]').val();
     var $phone = $(this).find('input[name="phone"]').val();
-    var $params = {
-        'token': 'y9mihwu4c_flhSiAzhl1',
-        'name': $flname,
-        'phone': $phone,
-        'email': $email,
-    };
+
+    var $items = [];
+
     sessionStorage.cart.split(';').forEach(function (product_id) {
         if (product_id === '') return;
-        $params['products[' + product_id + ']'] = sessionStorage.getItem('cart-prod-' + product_id);
+        var $item = {};
+        $item['product'] = product_id;
+        $item['quantity'] = sessionStorage.getItem('cart-prod-' + product_id);
+
+        $items.push($item);
     });
+
+    var $params = {};
+    $params['name'] = $flname;
+    $params['phone'] = $phone;
+    $params['email'] = $email;
+    $params['items'] = $items;
+
+
     jQuery.ajax({
-        url: 'https://nit.tron.net.ua/api/order/add',
+        url: 'http://tranquil-bayou-20279.herokuapp.com/api/order/',
         method: 'post',
+        contentType: 'application/json',
         dataType: 'json',
-        data: $params,
+        data: JSON.stringify($params),
         success: function (json) {
             var $para = $('.errors');
             var $ok = $('.operation_ok');
             $ok.empty();
             $para.empty();
-            console.log(json);
-            if (json.status === 'error') {
-                if (json.errors.products !== undefined) {
-                    $para.append($('<li>').text('You must select some products first.'));
-                }
-                if (json.errors.name !== undefined) {
-                    json.errors.name.forEach(function (error) {
-                        $para.append($('<li>').text(error));
-                    });
-                }
-                if (json.errors.email !== undefined) {
-                    json.errors.email.forEach(function (error) {
 
-                        $para.append($('<li>').text(error));
-                    });
-                }
-                if (json.errors.phone !== undefined) {
-                    json.errors.phone.forEach(function (error) {
-                        $para.append($('<li>').text(error));
-                    });
-                }
-            } else {
-                $ok.text("Operation successful!");
-                console.log('jfakljfsalkjaslk');
-                sessionStorage.cart.split(';').forEach(function (product_id) {
-                    if (product_id === '') return;
-                    sessionStorage.removeItem('cart-prod-' + product_id);
-                });
-                sessionStorage.removeItem('cart');
-            }
+            $ok.text("Operation successful!");
+            console.log('jfakljfsalkjaslk');
+            sessionStorage.cart.split(';').forEach(function (product_id) {
+                if (product_id === '') return;
+                sessionStorage.removeItem('cart-prod-' + product_id);
+            });
+            sessionStorage.removeItem('cart');
         },
+        error: function (jqXHR, status, thrownError) {
+            var $para = $('.errors');
+            var $ok = $('.operation_ok');
+            $ok.empty();
+            $para.empty();
+            var json = jQuery.parseJSON(jqXHR.responseText);
+            if (json.items !== undefined) {
+                $para.append($('<li>').text('You must select some products first.'));
+            }
+            if (json.name !== undefined) {
+                json.name.forEach(function (error) {
+                    $para.append($('<li>').text("Name: " + error));
+                });
+            }
+            if (json.email !== undefined) {
+                json.email.forEach(function (error) {
+
+                    $para.append($('<li>').text("Email: " +error));
+                });
+            }
+            if (json.phone !== undefined) {
+                json.phone.forEach(function (error) {
+                    $para.append($('<li>').text("Phone: " + error));
+                });
+            }
+
+        }
     });
-});
+})
+;
 
 $(document).on('click', '.quantity-button-minus', function () {
     var $product_id = $(this.parentNode).data('product-id');
