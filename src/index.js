@@ -8,7 +8,7 @@ function showCategory(category_id) {
     $('.aside').empty();
     sessionStorage.setItem('prev-category', category_id);
     jQuery.ajax({
-        url: 'http://tranquil-bayou-20279.herokuapp.com/api/product/category/' + category_id,
+        url: 'https://tranquil-bayou-20279.herokuapp.com/api/product/category/' + category_id,
         method: 'get',
         dataType: 'json',
         success: function (json) {
@@ -41,7 +41,7 @@ function showCategory(category_id) {
 function showProduct(product_id) {
     $('.aside').empty();
     jQuery.ajax({
-        url: 'http://tranquil-bayou-20279.herokuapp.com/api/product/' + product_id,
+        url: 'https://tranquil-bayou-20279.herokuapp.com/api/product/' + product_id,
         method: 'get',
         dataType: 'json',
         success: function (json) {
@@ -71,7 +71,7 @@ function showAll() {
     sessionStorage.setItem('prev-category', 'all-products');
 
     jQuery.ajax({
-        url: 'http://tranquil-bayou-20279.herokuapp.com/api/product/',
+        url: 'https://tranquil-bayou-20279.herokuapp.com/api/product/',
         method: 'get',
         dataType: 'json',
 
@@ -116,7 +116,7 @@ function loadCategories() {
         }
     });
     jQuery.ajax({
-        url: 'http://tranquil-bayou-20279.herokuapp.com/api/category/',
+        url: 'https://tranquil-bayou-20279.herokuapp.com/api/category/',
         method: 'get',
         dataType: 'json',
         success: function (json) {
@@ -168,7 +168,7 @@ function showCart() {
     $list.split(';').forEach(function (product_id) {
         if (product_id === '') return;
         jQuery.ajax({
-            url: 'http://tranquil-bayou-20279.herokuapp.com/api/product/' + product_id.trim(),
+            url: 'https://tranquil-bayou-20279.herokuapp.com/api/product/' + product_id.trim(),
             method: 'get',
             dataType: 'json',
             success: function (json) {
@@ -249,7 +249,7 @@ $(document).on('submit', '#buy-form', function (event) {
 
 
     jQuery.ajax({
-        url: 'http://tranquil-bayou-20279.herokuapp.com/api/order/',
+        url: 'https://tranquil-bayou-20279.herokuapp.com/api/order/',
         method: 'post',
         contentType: 'application/json',
         dataType: 'json',
