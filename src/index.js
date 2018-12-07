@@ -7,9 +7,15 @@ window.$ = $;
 function showCategory(category_id, price) {
     $('.aside').empty();
     // sessionStorage.setItem('prev-category', category_id);
+    var $category_q = "";
+    if (category_id === undefined || category_id.length == 0) {
+
+    } else {
+        $category_q = '&category=' + category_id.join(',');
+    }
 
     jQuery.ajax({
-        url: 'https://tranquil-bayou-20279.herokuapp.com/api/product/?category=' + category_id.join(',') + "&price="+price,
+        url: 'https://tranquil-bayou-20279.herokuapp.com/api/product/' + "?price="+price + $category_q,
         method: 'get',
         dataType: 'json',
         success: function (json) {
