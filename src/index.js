@@ -4,11 +4,12 @@ import $ from 'jquery';
 window.jQuery = $;
 window.$ = $;
 
-function showCategory(category_id) {
+function showCategory(category_id, price) {
     $('.aside').empty();
-    sessionStorage.setItem('prev-category', category_id);
+    // sessionStorage.setItem('prev-category', category_id);
+
     jQuery.ajax({
-        url: 'https://tranquil-bayou-20279.herokuapp.com/api/product/category/' + category_id,
+        url: 'https://tranquil-bayou-20279.herokuapp.com/api/product/?category=' + category_id.join(',') + "&price="+price,
         method: 'get',
         dataType: 'json',
         success: function (json) {
@@ -121,12 +122,13 @@ function loadCategories() {
         dataType: 'json',
         success: function (json) {
             json.forEach(function (category) {
-                var $category = $('<li class="btn btn-default btn-block category">');
-                $category.text(category.name);
-                $category.click(function () {
-                    showCategory(category.id);
-                });
-                $category.appendTo('.categories');
+                var $li_category = $('<li class="checkbox">');
+                var $label_category = $('<label class="li_category"><input type="checkbox" class="category-input">' + category.name + '</label>');
+
+                $label_category.attr('data-category-id', category.id);
+                $li_category.append($label_category);
+                $li_category.append($label_category);
+                $li_category.appendTo('ul.category');
             });
         },
     });
@@ -224,6 +226,23 @@ $(document).on('click', '.close-cart', function () {
     $cart_view.removeClass('active-cart').addClass('hidden-cart');
 });
 
+$(document).on('submit', '#select-form', function (event) {
+    event.preventDefault();
+    var $selected_cat = [];
+    $(".category-input").each(function (index) {
+        if(this.checked){
+            $selected_cat.push($(this.parentNode).data('category-id'));
+        }
+    });
+
+    var $price_lo = $('.price-lo').val();
+    var $price_hi = $('.price-hi').val();
+    if($price_lo==="") $price_lo= "0";
+    if($price_hi==="") $price_hi= "0";
+
+    showCategory($selected_cat, $price_lo + '-' + $price_hi);
+});
+
 $(document).on('submit', '#buy-form', function (event) {
     event.preventDefault();
     var $flname = $(this).find('input[name="flname"]').val();
@@ -285,7 +304,7 @@ $(document).on('submit', '#buy-form', function (event) {
             if (json.email !== undefined) {
                 json.email.forEach(function (error) {
 
-                    $para.append($('<li>').text("Email: " +error));
+                    $para.append($('<li>').text("Email: " + error));
                 });
             }
             if (json.phone !== undefined) {
@@ -343,6 +362,12 @@ $(document).on('click', '.remove-product', function () {
 
 $(document).on('click', '.all_products', function () {
     showAll();
+});
+
+$('.dropdown-menu').on({
+    "click": function (e) {
+        e.stopPropagation();
+    }
 });
 
 loadCategories();

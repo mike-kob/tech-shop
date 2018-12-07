@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="./css/main.css">
     <!--<link rel="stylesheet" href="./css/bootstrap.min.css">-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
 </head>
 <body>
 <div class="wrapper">
@@ -20,10 +21,25 @@
                     <li><a href="#"><span class="glyphicon glyphicon-arrow-left go-return"></span></a></li>
                     <li><a href="#" class="all_products">Всі товари</a></li>
                     <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Категорії
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Фільтр
                             <span class="caret"></span></a>
+
                         <ul class="dropdown-menu categories">
+                            <li>
+                                <form id="select-form" autocomplete="off">
+                                    Category
+                                    <ul class="category">
+
+                                    </ul>
+
+                                    <div>Price</div>
+                                    <input class="price-range price-lo" type="number" placeholder="From" step="50">
+                                    <input class="price-range price-hi" type="number" placeholder="To" step="50">
+                                    <input type="submit" class="btn btn-primary subm-filter">
+                                </form>
+                            </li>
                         </ul>
+
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -32,7 +48,6 @@
                 </ul>
             </div>
         </nav>
-
         <div class="aside col-xs-11 col-sm-11 col-md-11 col-lg-11">
 
         </div>

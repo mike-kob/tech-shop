@@ -122,10 +122,14 @@ $card_height: 440px;
   display: block;
 }
 
-li.category {
-  cursor: pointer;
+ul.category {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   display: block;
   background-color: darkgrey;
+  padding-left: 0;
 }
 
 .cart-view {
@@ -265,6 +269,16 @@ button.page-button {
 .footer {
   flex: 0 0 auto;
   background: #2c2f33e0;
+}
+
+.price-range{
+  width: 40%;
+  margin-left: 4%;
+  display: inline-block;
+}
+
+.subm-filter{
+  margin: 10px;
 }
 
 @media (max-width: 1000px) {
